@@ -13,6 +13,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.Build;
+import android.support.v4.app.TaskStackBuilder;
 import android.widget.AdapterView;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
@@ -22,6 +23,7 @@ import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteDatabase;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
 import com.sam_chordas.android.stockhawk.ui.MyStocksActivity;
+import com.sam_chordas.android.stockhawk.ui.StockActivity;
 
 /**
  * IntentService which handles updating all Today widgets with the latest data
@@ -93,8 +95,7 @@ public class QuoteWidgetRemoteViewsService extends RemoteViewsService {
 
         remoteView.setTextViewText(R.id.changeTextView, String.valueOf(change));
         remoteView.setTextViewText(R.id.stockSymbolTextView, stockSymbol);
-
-
+        
         return remoteView;
       }
 

@@ -20,6 +20,7 @@ import com.sam_chordas.android.stockhawk.R;
 import com.sam_chordas.android.stockhawk.rest.Utils;
 import com.sam_chordas.android.stockhawk.service.StockIntentService;
 import com.sam_chordas.android.stockhawk.ui.MyStocksActivity;
+import com.sam_chordas.android.stockhawk.ui.StockActivity;
 
 public class QuoteWidgetProvider extends AppWidgetProvider {
 
@@ -40,7 +41,7 @@ public class QuoteWidgetProvider extends AppWidgetProvider {
       } else {
         setRemoteAdapterV11(context, views);
       }
-      Intent clickIntentTemplate = new Intent(context, MyStocksActivity.class);
+      Intent clickIntentTemplate = new Intent(context, StockActivity.class);
       PendingIntent clickPendingIntentTemplate = TaskStackBuilder.create(context)
               .addNextIntentWithParentStack(clickIntentTemplate)
               .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);

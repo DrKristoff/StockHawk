@@ -9,4 +9,6 @@
     <dimen name="widget_margin">5dp</dimen>
     <dimen name="widget_default_height">250dp</dimen>
     <dimen name="widget_default_width">110dp</dimen>
+    <dimen name="widget_minResize_height">110dp</dimen>
+    <dimen name="widget_minResize_width">110dp</dimen>
 </resources>
