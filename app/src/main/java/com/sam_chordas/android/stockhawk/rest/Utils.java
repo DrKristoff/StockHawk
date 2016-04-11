@@ -22,6 +22,9 @@ public class Utils {
 
   private static String LOG_TAG = Utils.class.getSimpleName();
 
+  public static final String ACTION_DATA_UPDATED =
+          "com.sam_chordas.android.stockhawk.service.ACTION_DATA_UPDATED";
+
   public static boolean showPercent = true;
 
   public static ArrayList quoteJsonToContentVals(String JSON, Context context){

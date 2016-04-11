@@ -18,11 +18,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.InputType;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.sam_chordas.android.stockhawk.R;
@@ -56,17 +56,13 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
   private Context mContext;
   private Cursor mCursor;
   boolean isConnected;
+  TextView emptyView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     mContext = this;
-    ConnectivityManager cm =
-        (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-    NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-    isConnected = activeNetwork != null &&
-        activeNetwork.isConnectedOrConnecting();
     setContentView(R.layout.activity_my_stocks);
     // The intent service is for executing immediate pulls from the Yahoo API
     // GCMTaskService can only schedule tasks, they cannot execute immediately
@@ -81,6 +77,8 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
       }
     }
     RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+    emptyView = (TextView) findViewById(R.id.noNetworkView);
+
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
     getLoaderManager().initLoader(CURSOR_LOADER_ID, null, this);
 
@@ -173,6 +171,26 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     getLoaderManager().restartLoader(CURSOR_LOADER_ID, null, this);
     LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
               new IntentFilter("stock_error"));
+
+    ConnectivityManager cm =
+            (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+    NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+    isConnected = activeNetwork != null &&
+            activeNetwork.isConnectedOrConnecting();
+
+    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+    TextView noNetworkView = (TextView) findViewById(R.id.noNetworkView);
+    if(!isConnected){
+      recyclerView.setVisibility(View.GONE);
+      noNetworkView.setVisibility(View.VISIBLE);
+
+    } else {
+      recyclerView.setVisibility(View.VISIBLE);
+      noNetworkView.setVisibility(View.GONE);
+    }
+
+
   }
 
     // handler for received Intents for the "my-event" event
