@@ -121,7 +121,7 @@ public class StockActivity extends AppCompatActivity implements LoaderManager.Lo
             }
 
             // create a dataset and give it a type
-            LineDataSet set1 = new LineDataSet(yVals, "Bid Prices");
+            LineDataSet set1 = new LineDataSet(yVals, getResources().getString(R.string.chart_ylabel));
 
             LineData lineData = new LineData(labels, set1);
             mChart.setData(lineData); // set the data and list of lables into chart
@@ -131,7 +131,7 @@ public class StockActivity extends AppCompatActivity implements LoaderManager.Lo
             // no description text
             mChart.setDescription(symbolString);
             mChart.setDescriptionTextSize(16f);
-            mChart.setNoDataTextDescription("Ni data available.");
+            mChart.setNoDataTextDescription(getResources().getString(R.string.no_data_available));
             mChart.setBackgroundColor(Color.WHITE);
 
             set1.setDrawCubic(true);

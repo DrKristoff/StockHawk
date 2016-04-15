@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name" translatable="true">Stock Hawk</string>
 
+    <string name="add_stock" translatable="true">add</string>
     <string name="action_settings" translatable="true">Settings</string>
     <string name="action_change_units" translatable="true">Change Units</string>
     <string name="symbol_search" translatable="true">Symbol Search</string>
@@ -12,4 +13,7 @@
     <string name="a11y_add_stock" translatable="true">Add Stock</string>
     <string name="empty_view_text" translatable="true">Network Connection required to get Live Stock Quotes</string>
     <string name="widget_title" translatable="true">Stock Hawk Widget</string>
+    <string name="chart_ylabel">Bid Prices</string>
+    <string name="no_data_available">No Data Available</string>
+    <string name="stock_already_saved">This stock is already saved!</string>
 </resources>
